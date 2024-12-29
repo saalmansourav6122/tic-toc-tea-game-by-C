@@ -5,19 +5,19 @@ void printBoard();
 char board[]={'0','1','2','3','4','5','6','7','8','9'};
 
 void main(){
-    int player = 1, input, status;
+    int player = 1, input, status =-1;
      printBoard();
 
-     while (status == -1){
-
-    char mark = (player==1) ? 'X':'O';
-    scanf("%d",&input);
+    while (status == -1)
+    {
+        char mark = (player==1) ? 'X':'O';
+        scanf("%d",&input);
     if(input<1 || input>9){
         printf("invalid input");
     }
-     }
     board[input] = mark;
     printBoard();
+    }
 }
 
 void printBoard(){
