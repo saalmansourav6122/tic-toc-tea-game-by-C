@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void printBoard();
+void showBoard();
 char board[]={'0','1','2','3','4','5','6','7','8','9'};
 
 void main(){
     int player = 1, input, status =-1;
-     printBoard();
+     showBoard();
 
     while (status == -1)
     {
@@ -18,12 +18,12 @@ void main(){
         printf("invalid input");
     }
     board[input] = mark;
-    printBoard();
+    showBoard();
     player++;
     }
 }
 
-void printBoard(){
+void showBoard(){
     printf("\n\n");
     printf("!!! Tic Tac Toe Game !!!!\n\n");
     printf("    |    |    \n");
