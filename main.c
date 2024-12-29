@@ -10,13 +10,16 @@ void main(){
 
     while (status == -1)
     {
+        player =(player%2==0)? 2: 1;
         char mark = (player==1) ? 'X':'O';
+        printf("Please enter Number for player %d \n", player);
         scanf("%d",&input);
     if(input<1 || input>9){
         printf("invalid input");
     }
     board[input] = mark;
     printBoard();
+    player++;
     }
 }
 
