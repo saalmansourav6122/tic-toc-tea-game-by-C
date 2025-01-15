@@ -3,6 +3,13 @@
 
 void showBoard();
 int checkWin();
+void clearScreen() {
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
 
 char board[]={'0','1','2','3','4','5','6','7','8','9'};
 
@@ -16,9 +23,10 @@ void main(){
         char mark = (player==1) ? 'X':'O';
         printf("Please enter Number for player %d \n", player);
         scanf("%d",&input);
-    if(input<1 || input>9){
-        printf("invalid input");
-    }
+         if (input < 1 || input > 9 || board[input] == 'X' || board[input] == 'O') {
+            printf("Invalid input. Please try again.\n");
+            continue;
+        };
     board[input] = mark;
     showBoard();
 
@@ -36,6 +44,7 @@ void main(){
 }
 
 void showBoard(){
+    clearScreen();
     printf("\n\n");
     printf("!!! Tic Tac Toe Game !!!!\n\n");
     printf("    |    |    \n");
