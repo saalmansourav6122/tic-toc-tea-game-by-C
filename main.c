@@ -3,7 +3,7 @@
 
 void showBoard();
 int checkWin();
-void clearScreen() {
+void clearScreen() { /*Conditional Compilation || operating system*/
 #ifdef _WIN32
     system("cls");
 #else
@@ -14,6 +14,7 @@ void clearScreen() {
 char board[]={'0','1','2','3','4','5','6','7','8','9'};
 
 void main(){
+
     int player = 1, input, status =-1;
      showBoard();
 
@@ -23,10 +24,13 @@ void main(){
         char mark = (player==1) ? 'X':'O';
         printf("Please enter Number for player %d \n", player);
         scanf("%d",&input);
-         if (input < 1 || input > 9 || board[input] == 'X' || board[input] == 'O') {
-            printf("Invalid input. Please try again.\n");
-            continue;
-        };
+         if (input < 1 || input > 9){
+                 printf("Please choose 1-9 number.\n");
+                 continue; // It's use to give two messages for users
+        } else if ( board[input] == 'X' || board[input] == 'O'){
+            printf("Invalid input. Don't use some input.\n");
+                continue; // It's use to give two messages for users
+        }
     board[input] = mark;
     showBoard();
 
@@ -34,10 +38,10 @@ void main(){
 
     if(result ==1){
         printf("Player %d winner", player);
-        return;
+        return ;
     }else if(result==0){
         printf("draw");
-        return;
+        return ;
     }
     player++;
     }
@@ -93,5 +97,4 @@ if(count==9){
     return 0;
 }
 return -1;
-
 }
